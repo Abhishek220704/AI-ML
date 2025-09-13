@@ -1,0 +1,26 @@
+Part 1 – Python (for AIML Interviews)
+
+
+Core Python syntax & concepts
+
+Data Structures
+
+OOP
+
+Advanced Python (decorators, generators, context managers)
+
+Libraries for AI/ML
+
+1️⃣ Core Python Concepts
+
+Variables & Data Types → int, float, str, bool
+
+Control Structures → if/else, loops, comprehensions
+
+Functions → def, default arguments, *args, **kwargs
+
+<pre> ```def greet(name="World"):
+    return f"Hello, {name}!"
+
+print(greet())       # Hello, World!
+print(greet("AI"))   # Hello, AI!``` </pre>
