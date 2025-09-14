@@ -1,0 +1,150 @@
+1️⃣ What is LangChain?
+
+LangChain = Python framework for LLM-powered applications.
+
+It helps you:
+
+Connect LLMs (OpenAI, HuggingFace, etc.)
+
+Add memory (conversation history)
+
+Add tools (search, APIs, databases)
+
+Build chains (multi-step workflows)
+
+Create autonomous agents
+
+📌 Example: Instead of only answering “What’s 2+2?”, an Agent can:
+
+Search Google
+
+Query a SQL database
+
+Retrieve a PDF from Chroma DB
+
+Then answer: “4, and here’s supporting doc”
+
+2️⃣ Core LangChain Concepts
+(a) Chains
+
+Sequence of steps where output of one = input of next.
+
+Example:
+
+Step 1: Retrieve docs
+
+Step 2: Summarize with LLM
+
+from langchain.chains import LLMChain
+from langchain.prompts import PromptTemplate
+from langchain.llms import OpenAI
+
+prompt = PromptTemplate.from_template("Summarize: {text}")
+llm = OpenAI()
+chain = LLMChain(llm=llm, prompt=prompt)
+
+print(chain.run("AI helps improve data quality"))
+
+(b) Tools
+
+Functions an Agent can call.
+
+Examples: Google search, SQL query, Python REPL.
+
+(c) Memory
+
+By default, LLMs are stateless (forget previous conversation).
+
+Memory lets agents remember past interactions.
+
+Types:
+
+ConversationBufferMemory → stores all chat history.
+
+ConversationSummaryMemory → keeps compressed summary.
+
+(d) Agents
+
+Agents = LLM + Reasoning + Tools + Memory.
+
+Can decide:
+
+What the query is asking.
+
+Which tools to call.
+
+How to combine answers.
+
+📌 Example:
+Ask: “What’s the population of France × 2?”
+Agent:
+
+Calls Google Search for “Population of France”.
+
+Reads: 67M.
+
+Does calculation = 134M.
+
+Returns answer.
+
+3️⃣ LangGraph
+
+LangGraph = new framework (from LangChain team) for stateful, graph-based AI workflows.
+
+Instead of just “chains”, you define a graph of nodes (agents, tools, retrievers).
+
+Better for complex multi-step workflows (e.g., autonomous agents that need branching logic).
+
+4️⃣ Example: RAG-powered QA Bot
+from langchain.chains import RetrievalQA
+from langchain.vectorstores import Chroma
+from langchain.llms import OpenAI
+
+# Connect to vector DB
+retriever = Chroma(persist_directory="db").as_retriever()
+
+# RAG pipeline
+qa = RetrievalQA.from_chain_type(
+    llm=OpenAI(), retriever=retriever
+)
+
+print(qa.run("Summarize Pfizer’s Q2 financial report"))
+
+
+👉 Here the Agent:
+
+Retrieves context (vector DB)
+
+Passes enriched prompt to LLM
+
+Returns grounded, accurate response
+
+5️⃣ Multi-Agent Systems
+
+Multiple agents collaborating, each specialized.
+
+Example:
+
+Agent 1 → Data Retriever (from Chroma DB)
+
+Agent 2 → Financial Analyst (summarizes reports)
+
+Agent 3 → Writer Agent (formats into user-friendly answer)
+
+👉 Interview Question Example:
+“How would you design a system where one agent fetches company reports and another agent summarizes them into executive briefs?”
+✅ Answer should describe: LangChain Agents + memory + multi-agent orchestration (via LangGraph).
+
+📝 LangChain & Agents MCQs
+
+Q1. What component in LangChain allows an LLM to “remember” past interactions?
+✅ Memory
+
+Q2. Which LangChain concept enables multi-step reasoning pipelines?
+✅ Chains
+
+Q3. What’s the role of a Vector Database in RAG?
+✅ Store & retrieve embeddings for context
+
+Q4. Which framework is better for stateful agent workflows?
+✅ LangGraph
