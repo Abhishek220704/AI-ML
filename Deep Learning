@@ -104,3 +104,145 @@ class SimpleNN(nn.Module):
 
 model = SimpleNN()
 print(model)
+
+🧠 1️⃣ Neural Networks – Intuition & Math
+
+A neural network is just a function approximator.
+
+Each neuron takes inputs, multiplies with weights, adds bias, applies activation.
+
+Equation for a single neuron:
+
+where f = activation function
+y=f(z)where f = activation function
+
+📌 Example: Predicting if a student passes exam based on hours studied and hours slept.
+
+🔄 2️⃣ Training a Neural Network
+
+Steps:
+
+Forward Pass – compute predictions.
+
+Loss Function – measure error.
+
+Regression → MSE
+
+Classification → Cross-Entropy Loss
+
+Backpropagation – compute gradients of weights.
+
+Optimizer (e.g., Gradient Descent, Adam) – update weights.
+
+👉 Formula for weight update (Gradient Descent):
+
+w:=w−η⋅∂w/∂L
+
+where η = learning rate.
+
+📌 If η is too high → diverges, too low → very slow learning.
+
+⚡ 3️⃣ Activation Functions
+
+Sigmoid: 
+
+σ(x)=1+e−x1
+	​
+ → good for probability output.
+❌ Problem: vanishing gradients.
+
+Tanh: outputs (-1,1). Better than sigmoid, but still suffers vanishing gradient.
+
+ReLU: 
+f(x)=max(0,x) → fast, solves vanishing gradient.
+❌ Problem: “dying ReLU” (neuron stuck at 0).
+
+Leaky ReLU: allows small slope for negatives.
+
+Softmax: turns logits into probabilities for multi-class classification.
+
+📌 Rule of thumb:
+
+Hidden layers → ReLU (or Leaky ReLU).
+
+Binary output → Sigmoid.
+
+Multi-class output → Softmax.
+
+🖼️ 4️⃣ CNN (Convolutional Neural Networks)
+
+Best for image data.
+
+Convolution Layer: filter (kernel) slides over image, extracts features (edges, textures).
+
+Pooling Layer: reduces size (e.g., max pooling keeps strongest signal).
+
+Fully Connected Layer: makes final prediction.
+
+👉 Why CNN is better than fully connected NN for images?
+✅ Because CNN shares weights (filter reused everywhere) + captures spatial patterns.
+
+📌 Example: CNN for MNIST digit classification.
+
+⏳ 5️⃣ RNNs & LSTMs
+
+Used for sequential data (text, time-series, speech).
+
+RNN: Each output depends on previous hidden state.
+Problem → vanishing gradient for long sequences.
+
+LSTM (Long Short-Term Memory): fixes this using gates:
+
+Forget gate → what to keep/drop.
+
+Input gate → what to add.
+
+Output gate → what to output.
+
+👉 Example: Predict next word in a sentence.
+
+📌 LSTM advantage → remembers long-term dependencies.
+
+🔥 6️⃣ Transformers
+
+Foundation of modern LLMs (GPT, BERT, LLaMA).
+
+Key idea: Self-Attention.
+
+Every word looks at all other words and assigns weights.
+
+Captures long-range dependencies better than RNNs.
+
+Equation (simplified self-attention):
+
+Attention(Q,K,V)=softmax(dkQKT)V
+
+Q = Query, K = Key, V = Value (all derived from word embeddings).
+
+Positional Encoding adds order info.
+
+📌 Architectures:
+
+BERT → encoder-only (good for understanding tasks: classification, QA).
+
+GPT → decoder-only (good for generation: text, code, chat).
+
+👉 Example: ChatGPT = stacked Transformer Decoders.
+
+📝 Deep Learning Recap MCQs
+
+Q1. Which activation is most widely used in hidden layers?
+a) Sigmoid
+b) Tanh
+c) ReLU
+d) Softmax
+✅ Answer: c) ReLU
+
+Q2. Which problem does LSTM solve compared to vanilla RNN?
+✅ Vanishing gradient
+
+Q3. Which mechanism allows Transformers to capture long-range dependencies?
+✅ Self-Attention
+
+Q4. Why is pooling used in CNN?
+✅ To reduce dimensionality and extract dominant features.
