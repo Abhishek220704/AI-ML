@@ -1,0 +1,106 @@
+1️⃣ Neural Networks
+
+A neural network is inspired by the human brain.
+
+Composed of neurons arranged in layers:
+
+Input layer → Hidden layers → Output layer.
+
+Each neuron applies:
+
+z=∑(wi⋅xi)+b
+
+(activation function)
+y=f(z)(activation function)
+
+👉 Training uses Gradient Descent:
+
+Forward pass → compute loss → Backpropagation → update weights.
+
+📌 Example: Predicting if a student passes based on study hours + sleep.
+
+2️⃣ Activation Functions
+
+Sigmoid: squashes between 0 and 1 → used in binary classification.
+
+Tanh: squashes between -1 and 1.
+
+ReLU (Rectified Linear Unit):
+
+f(x)=max(0,x)
+
+Most common in hidden layers.
+
+Softmax: converts outputs into probabilities (multi-class).
+
+👉 MCQ Example:
+Which activation is most used in hidden layers of deep networks?
+✅ ReLU
+
+3️⃣ CNN (Convolutional Neural Networks)
+
+Designed for images.
+
+Convolution → applies filters (detect edges, shapes, textures).
+
+Pooling → reduces dimensionality (max-pooling).
+
+Fully Connected layers → final classification.
+
+📌 Example: Classifying MNIST digits.
+
+👉 Interview Q:
+Why CNNs are better than fully connected networks for images?
+✅ Because they share weights and exploit spatial locality.
+
+4️⃣ RNN (Recurrent Neural Networks)
+
+Designed for sequences (time-series, text).
+
+Each step’s output depends on previous hidden state.
+
+Problem → Vanishing Gradient (can’t capture long dependencies).
+
+LSTM/GRU → solve this by using gates (forget, input, output).
+
+📌 Example: Predicting next word in a sentence.
+
+5️⃣ Transformers (Backbone of GPT, BERT, LLaMA)
+
+Revolutionized NLP → no recurrence, only Attention mechanism.
+
+Self-Attention → lets model focus on relevant words in a sequence.
+Example: In “The cat sat on the mat,” when predicting “mat,” the model attends to “sat on the.”
+
+Positional Encoding → adds order information.
+
+Encoder-Decoder architecture:
+
+BERT → only encoder (good for understanding tasks).
+
+GPT → only decoder (good for generation).
+
+📌 Example: ChatGPT uses a decoder-only Transformer.
+
+👉 MCQ Example:
+Which mechanism allows Transformers to capture long-range dependencies?
+✅ Self-Attention
+
+🛠️ Mini Example (PyTorch)
+import torch
+import torch.nn as nn
+
+# Simple feedforward NN
+class SimpleNN(nn.Module):
+    def __init__(self):
+        super(SimpleNN, self).__init__()
+        self.fc1 = nn.Linear(10, 20)  # 10 input features → 20 hidden
+        self.relu = nn.ReLU()
+        self.fc2 = nn.Linear(20, 1)   # output layer
+
+    def forward(self, x):
+        x = self.relu(self.fc1(x))
+        return self.fc2(x)
+
+model = SimpleNN()
+print(model)
