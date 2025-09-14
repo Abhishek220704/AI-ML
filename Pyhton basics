@@ -1,0 +1,123 @@
+Part 1 – Python 
+
+
+Core Python syntax & concepts
+
+Data Structures
+
+OOP
+
+Advanced Python (decorators, generators, context managers)
+
+Libraries for AI/ML
+
+1️⃣ Core Python Concepts
+
+Variables & Data Types → int, float, str, bool
+
+Control Structures → if/else, loops, comprehensions
+
+Functions → def, default arguments, *args, **kwargs
+
+def greet(name="World"):
+    return f"Hello, {name}!"
+
+print(greet())       # Hello, World!
+print(greet("AI"))   # Hello, AI!
+
+2️⃣ Data Structures
+
+Lists
+nums = [1, 2, 3]
+nums.append(4)      # [1,2,3,4]
+nums.pop()          # removes 4
+
+Tuples (immutable)
+coords = (10, 20)
+
+Sets (unique elements)
+s = {1, 2, 2, 3}
+print(s)  # {1, 2, 3}
+
+Dictionaries
+student = {"name": "Abhishek", "age": 22}
+print(student["name"])  # Abhishek
+
+3️⃣ OOP in Python
+
+Classes & Objects
+
+class Dog:
+    def __init__(self, name):
+        self.name = name
+    
+    def bark(self):
+        return f"{self.name} says woof!"
+
+d = Dog("Tommy")
+print(d.bark())  # Tommy says woof!
+
+
+Inheritance
+
+class Animal:
+    def speak(self):
+        return "I make sounds"
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow!"
+
+c = Cat()
+print(c.speak())  # Meow!
+
+4️⃣ Advanced Python
+
+Decorators
+
+def logger(func):
+    def wrapper():
+        print("Function is called")
+        return func()
+    return wrapper
+
+@logger
+def hello():
+    print("Hello!")
+
+hello()
+
+
+Generators
+
+def counter(n):
+    for i in range(n):
+        yield i
+
+for x in counter(3):
+    print(x)  # 0,1,2
+
+
+Context Managers (with)
+
+with open("data.txt", "w") as f:
+    f.write("Hello AI")
+
+5️⃣ Essential Libraries
+
+NumPy → arrays, matrix operations
+
+Pandas → DataFrames, filtering, groupby
+
+Matplotlib/Seaborn → plotting
+
+Scikit-learn → ML models
+
+TensorFlow/PyTorch → Deep learning
+
+📌 Example with Pandas:
+
+import pandas as pd
+data = {"Name": ["A", "B"], "Score": [85, 90]}
+df = pd.DataFrame(data)
+print(df[df["Score"] > 85])  # prints row with B
