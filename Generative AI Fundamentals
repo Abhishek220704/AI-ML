@@ -1,0 +1,155 @@
+1️⃣ What is Generative AI?
+
+Generative AI: models that create new content (text, images, code, audio) based on learned patterns.
+
+Powered by deep neural networks (esp. Transformers).
+
+📌 Examples:
+
+ChatGPT → generates text/code.
+
+Stable Diffusion → generates images.
+
+👉 Why it matters for your role?
+Because enterprises (like Morgan Stanley, Wells Fargo – Torana clients) want data-driven AI assistants that can retrieve, reason, and respond accurately.
+
+2️⃣ Large Language Models (LLMs)
+
+Built on Transformers (decoder or encoder-decoder).
+
+Trained on huge text corpora (web, books, code).
+
+Learn next-word prediction → but generalize to summarization, translation, reasoning.
+
+📌 Examples:
+
+GPT-3.5, GPT-4 → OpenAI
+
+LLaMA, Mistral → Open-source
+
+BERT → encoder, for classification/search
+
+3️⃣ Fine-Tuning vs. Prompt Engineering
+Fine-Tuning
+
+Modify weights of model with new dataset.
+
+Heavy compute, large data needed.
+
+Example: Fine-tuning GPT on medical texts → medical assistant.
+
+Prompt Engineering
+
+No retraining → use clever prompts to guide model output.
+
+Cheaper, faster.
+
+Techniques:
+
+Zero-shot prompting → “Translate this sentence to French.”
+
+Few-shot prompting → give examples in prompt.
+
+Chain-of-Thought prompting → ask model to reason step by step.
+
+📌 Example:
+Instead of → “What is 27 × 42?”
+Better → “Solve step by step: what is 27 × 42?”
+→ Leads to more accurate reasoning.
+
+4️⃣ Embeddings & Vector Databases
+
+LLMs are powerful, but they don’t know your company data.
+
+Solution: Represent documents as vectors (embeddings).
+
+👉 Example:
+Sentence → “AI helps data quality.”
+Embedding → [0.12, -0.33, 0.87, …] (dense vector).
+
+Store embeddings in Vector DB (like FAISS, Pinecone, Chroma).
+
+For search:
+
+Convert query → embedding.
+
+Find nearest vectors (cosine similarity).
+
+Retrieve relevant documents.
+
+5️⃣ Retrieval-Augmented Generation (RAG)
+
+RAG = Retrieval + Generation
+
+Pipeline:
+
+User Query (“Summarize Pfizer’s Q2 report”).
+
+Convert query → embedding.
+
+Search in Vector DB (find relevant documents).
+
+Add retrieved context to query.
+
+Pass enriched query to LLM → get accurate answer.
+
+👉 Benefits:
+
+LLMs answer with fresh, specific company data.
+
+Avoids hallucinations.
+
+Easier & cheaper than fine-tuning.
+
+📌 Example (LangChain RAG):
+
+from langchain.chains import RetrievalQA
+from langchain.llms import OpenAI
+from langchain.vectorstores import Chroma
+
+llm = OpenAI()
+qa = RetrievalQA.from_chain_type(
+    llm=llm, retriever=my_vector_db.as_retriever()
+)
+
+result = qa.run("Summarize Pfizer’s Q2 report")
+print(result)
+
+6️⃣ AI Agents
+
+An AI Agent = LLM + tools + memory.
+
+Instead of only answering, it can:
+
+Search docs, run SQL queries, call APIs.
+
+Plan multi-step reasoning.
+
+Examples:
+
+LangChain Agents
+
+AutoGPT, BabyAGI
+
+📌 Example Use-case at Torana:
+An AI Agent that automatically:
+
+Monitors ETL pipeline logs
+
+Detects anomalies
+
+Generates a report for engineers
+
+📝 Generative AI Recap MCQs
+
+Q1. What is the main advantage of RAG over fine-tuning?
+✅ RAG uses external knowledge dynamically without retraining.
+
+Q2. Which database type is used for embeddings?
+✅ Vector Database (FAISS, Pinecone, Chroma)
+
+Q3. In Prompt Engineering, what is “Few-shot learning”?
+✅ Giving model examples in the prompt.
+
+Q4. Which mechanism powers LLMs like GPT?
+✅ Transformer (Self-Attention)
