@@ -3,7 +3,6 @@
 LangChain = Python framework for LLM-powered applications.
 
 It helps you:
-
 Connect LLMs (OpenAI, HuggingFace, etc.)
 
 Add memory (conversation history)
