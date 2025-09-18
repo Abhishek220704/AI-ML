@@ -59,7 +59,6 @@ Memory lets agents remember past interactions.
 Types:
 
 ConversationBufferMemory → stores all chat history.
-
 ConversationSummaryMemory → keeps compressed summary.
 
 (d) Agents
