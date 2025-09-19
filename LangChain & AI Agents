@@ -24,8 +24,7 @@ Retrieve a PDF from Chroma DB
 Then answer: “4, and here’s supporting doc”
 
 2️⃣ Core LangChain Concepts
-(a) Chains
-
+(a) Chain
 Sequence of steps where output of one = input of next.
 
 Example:
