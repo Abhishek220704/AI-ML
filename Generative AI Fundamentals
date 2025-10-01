@@ -21,7 +21,6 @@ Trained on huge text corpora (web, books, code).
 Learn next-word prediction → but generalize to summarization, translation, reasoning.
 
 📌 Examples:
-
 GPT-3.5, GPT-4 → OpenAI
 
 LLaMA, Mistral → Open-source
