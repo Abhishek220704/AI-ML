@@ -7,7 +7,6 @@ Input layer → Hidden layers → Output layer.
 
 Each neuron applies:
 z=∑(wi⋅xi)+b
-
 (activation function)
 y=f(z)(activation function)
 
