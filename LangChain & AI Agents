@@ -9,8 +9,7 @@ Add memory (conversation history)
 Add tools (search, APIs, databases)
 
 Build chains (multi-step workflows)
-
-Create autonomous agents
+Create autonomous agent
 
 📌 Example: Instead of only answering “What’s 2+2?”, an Agent can:
 
